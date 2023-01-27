@@ -38,10 +38,13 @@ Api server-chat foi documentada utilizando o swagger. Após executar o server-ch
 
 ## Layout
 
-![Home](path/to/file)
-![Session](path/to/file)
-![Login](path/to/file)
-![Fluxo](path/to/file)
+- ![Home](https://github.com/hubchat/webchat-teste/blob/master/layout/Home.png)  
+
+- ![Session](https://github.com/hubchat/webchat-teste/blob/master/layout/Session.png)  
+
+- ![Login](https://github.com/hubchat/webchat-teste/blob/master/layout/Login.png)  
+
+- ![Fluxo](https://github.com/hubchat/webchat-teste/blob/master/layout/Fluxo.gif)  
 
 - Não será feito uma análise píxel a píxel do layout, as imagens são para se basear e não uma regra
 

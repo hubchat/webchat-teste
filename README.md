@@ -1,6 +1,6 @@
 # HUBHCAT  
 
-O projeto precisa ser desenvolvido em angular. A ideia do teste é ser criado o front-end de um chat online, onde o usuário possa se cadastrar, conectar, criar salas e utilizar essas salas para conversar recebendo as mensagens em real time através de um websocket. As funções esperadas do sistema são:
+O projeto precisa ser desenvolvido em angular. A ideia do teste é ser criado o front-end de um chat online, onde o usuário possa se cadastrar, conectar, criar salas e utilizar essas salas para conversar recebendo as mensagens em real time através de um websocket,**o back-end está pronto e na seção execução do servidor tem a explicação de como rodar o projeto**. As funções esperadas do sistema são:
 
 - Devera ser possível criar um usuário.
 - Devera ser possível fazer um login com usuário criado.

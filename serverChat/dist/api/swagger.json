@@ -1,0 +1,502 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Hubchat Documentation",
+    "description": "This is an API HubChat",
+    "version": "1.0.0",
+    "contact": {
+      "email": "gustavo93.lima@gmail.com"
+    }
+  },
+  "paths": {
+    "/api/v1/user": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get for your id",
+        "description": "Search for your id",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "404": {
+            "description": "user not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Create a user",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "name",
+                  "email": "lorem@lorem.com",
+                  "password": "pas123"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "user already exists"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "update a user",
+        "description": "update a user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "name",
+                  "email": "lorem@lorem.com",
+                  "password": "pas123"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "404": {
+            "description": "user already exists"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Delete your user",
+        "description": "Delete your user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "404": {
+            "description": "user not found"
+          }
+        }
+      }
+    },
+    "/api/v1/room": {
+      "get": {
+        "tags": [
+          "Room"
+        ],
+        "summary": "Get a room",
+        "description": "Get rooms in the server",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Pagination",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit pagination",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/Room"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An error has occurred"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Room"
+        ],
+        "summary": "Create a room",
+        "description": "Create a new room",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Room"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "An error has occurred"
+          }
+        }
+      }
+    },
+    "/api/v1/room/{id}": {
+      "get": {
+        "tags": [
+          "Room"
+        ],
+        "summary": "Get the room",
+        "description": "Get the room",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "room id that needs to be updated",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Not authorized"
+          },
+          "404": {
+            "description": "Room not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Room"
+        ],
+        "summary": "Update the room",
+        "description": "Update the room",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "room id that needs to be updated",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Room"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Not authorized"
+          },
+          "404": {
+            "description": "Room not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Room"
+        ],
+        "summary": "Delete the room",
+        "description": "Delete the room",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "room id that needs to be updated",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Not authorized"
+          },
+          "404": {
+            "description": "Room not found"
+          }
+        }
+      }
+    },
+    "/api/v1/room-dialog": {
+      "get": {
+        "tags": [
+          "RoomDialog"
+        ],
+        "summary": "Get a room-dialog",
+        "description": "Get messages in room",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Pagination",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit pagination",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "roomId",
+            "in": "query",
+            "description": "Id Room",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/RoomDialog"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An error has occurred"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "RoomDialog"
+        ],
+        "summary": "Create a room-dialog",
+        "description": "Save a new message in room",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/RoomDialog"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "An error has occurred"
+          }
+        }
+      }
+    },
+    "/api/v1/session": {
+      "post": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "Create a session",
+        "description": "authentication endpoint",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "email": "lorem@lorem.com",
+                  "password": "pas123"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Email or password invalid"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Room": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "RoomDialog": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "ownerId": {
+          "type": "string"
+        },
+        "roomId": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

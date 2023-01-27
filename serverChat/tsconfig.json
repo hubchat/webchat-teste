@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "rootDir": "./",
+    "baseUrl": "./src",
+    "outDir": "./dist",
+    "paths": {
+      "@routes/*": [
+        "api/routes/*"
+      ],
+      "@modules/*": [
+        "api/modules/*"
+      ],
+      "@shared/*": [
+        "api/shared/*"
+      ],
+      "@database/*": [
+        "api/database/*"
+      ],
+      "@middlewares/*": [
+        "api/middlewares/*"
+      ],
+    },
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  }
+}

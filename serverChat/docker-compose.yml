@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  database: 
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/var/lib/mongodb
+
+  app:
+    build: .
+    container_name: serverchat
+    restart: always
+    ports: 
+      - 3333:3333
+      - 9229:9229
+    volumes: 
+      - .:/usr/app
+    links: 
+      - database
+    depends_on:
+      - database
+
+
+volumes:
+  mongodb:
+    driver: local
